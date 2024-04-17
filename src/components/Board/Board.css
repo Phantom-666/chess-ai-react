@@ -1,0 +1,65 @@
+.board {
+  display: grid;
+  grid-template-columns: calc(0.25 * 100px) calc(8 * 100px);
+}
+
+.turn-table {
+  position: absolute;
+  top: 0;
+  left: 3%;
+}
+
+.turn-table-w {
+  color: white;
+}
+
+.turn-table-b {
+  color: black;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(8, 100px);
+  grid-template-rows: repeat(8, 100px);
+  width: calc(8 * 100px);
+}
+
+.tile-light {
+  background: white;
+}
+.tile-dark {
+  background: #222426;
+}
+
+.highlight:after {
+  content: "";
+  display: block;
+  width: calc(0.25 * 100px);
+  height: calc(0.25 * 100px);
+  background-color: #343a42;
+  border-radius: 50%;
+  margin-top: 37%;
+  margin-left: 37%;
+}
+
+.attacking:after {
+  content: "";
+  display: block;
+  width: calc(0.7 * 100px);
+  height: calc(0.7 * 100px);
+  border-radius: 50%;
+  margin-top: 11%;
+  margin-left: 11%;
+  border: 5px solid #343a42;
+}
+
+.checked:after {
+  content: "";
+  display: block;
+  width: calc(0.7 * 100px);
+  height: calc(0.7 * 100px);
+  border-radius: 50%;
+  margin-top: 11%;
+  margin-left: 11%;
+  border: 5px solid #feec48;
+}

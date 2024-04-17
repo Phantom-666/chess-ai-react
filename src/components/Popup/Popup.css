@@ -1,0 +1,14 @@
+.popup {
+  right: 0;
+  top: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.popup-inner {
+  width: 25%;
+  min-height: 15%;
+  /* background: white; */
+  position: absolute;
+}

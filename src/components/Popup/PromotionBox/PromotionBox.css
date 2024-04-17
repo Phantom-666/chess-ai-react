@@ -1,0 +1,35 @@
+.promotions-choices {
+  left: 40%;
+  top: 1%;
+}
+
+.promotions-choices .piece {
+  width: 25%;
+  height: 50%;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 20%;
+}
+
+.promotions-choices .piece:hover {
+  transform: scale(1.05);
+}
+
+.promotions-choices :is(.wq, .bq) {
+  left: 0;
+}
+
+.promotions-choices :is(.wr, .br) {
+  left: 26%;
+}
+
+.promotions-choices :is(.wb, .bb) {
+  left: 52%;
+}
+
+.promotions-choices :is(.wn, .bn) {
+  left: 78%;
+}

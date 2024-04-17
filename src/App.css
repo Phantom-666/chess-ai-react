@@ -1,0 +1,13 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background: #4e5157;
+  grid-template-columns: auto 220px;
+}
