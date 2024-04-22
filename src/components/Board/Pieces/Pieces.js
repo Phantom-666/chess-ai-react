@@ -160,9 +160,24 @@ const Pieces = () => {
       turn,
       session_name,
     })
-    const final_object = res.data.final_object
 
-    if (!final_object?.piece) {
+    const bestMove = res.data.best_move
+
+    const { x, y, rank, file } = bestMove
+
+    // console.log(
+    //   "appState.position[appState.position.length - 1]",
+    //   appState.position[appState.position.length - 1]
+    // )
+
+    const piece = appState.position[appState.position.length - 1][rank][file]
+
+    // console.log("piece", piece)
+    // const final_object = res.data.final_object
+
+    const checkmate = res.data.checkmate
+
+    if (checkmate) {
       await axios.post("http://localhost:5000/checkmate", {
         session_name: session_name,
         turn: turn === "b" ? "w" : "b",
@@ -174,23 +189,13 @@ const Pieces = () => {
       return console.log("CHECKMATE")
     }
 
-    const piece = final_object.piece.piece
+    // const piece = final_object.piece.piece
 
-    // x, y -> конечные точки
+    // const x = final_object.moveTo.first
+    // const y = final_object.moveTo.second
 
-    const x = final_object.moveTo.first
-    const y = final_object.moveTo.second
-
-    const rank = final_object.piece.col
-    const file = final_object.piece.row
-
-    // console.log("x", x)
-    // console.log("y", y)
-
-    // console.log("rank", rank)
-    // console.log("file", file)
-
-    // const [piece, rank, file] = e.dataTransfer.getData("text").split(",")
+    // const rank = final_object.piece.col
+    // const file = final_object.piece.row
 
     const opponent = piece.startsWith("b") ? "w" : "b"
     const castleDirection = appState.castleDirection[`${opponent}`]
@@ -271,7 +276,7 @@ const Pieces = () => {
       } catch (error) {
         console.log("error", error)
       }
-    }, 500)
+    }, 2000)
 
     return () => clearInterval(id)
   }, [appState, moves, session_name])
@@ -300,7 +305,7 @@ const Pieces = () => {
         </div>
       </div>
       <div style={{ position: "absolute", top: "0" }}>
-        <button onClick={fetchToServer}>Fetch</button>
+        <button onClick={() => fetchToServer(appState)}>Fetch</button>
 
         <span>Status : {serverStatus}</span>
       </div>
